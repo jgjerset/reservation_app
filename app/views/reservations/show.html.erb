@@ -5,12 +5,12 @@
 
 <p>
   <b>Startdate:</b>
-  <%= @reservation.startdate %>
+  <%= @reservation.startdate.to_s(:proper) %>
 </p>
 
 <p>
   <b>Enddate:</b>
-  <%= @reservation.enddate %>
+  <%= @reservation.enddate.to_s(:proper) %>
 </p>
 
 <p>
@@ -35,7 +35,7 @@
 
 
 <%= link_to 'Edit', edit_reservation_path(@reservation) %> |
-<%= link_to 'Back', reservations_path %>
+<%= link_to 'Back', home_path %>
 
   </div>
 </div>

@@ -1,0 +1,50 @@
+class Reservation < ActiveRecord::Base
+  attr_accessible :email, :enddate_string, :first_name, :last_name, :phone, :startdate_string
+
+  validates :startdate_string, :enddate_string, :first_name, :last_name,  presence: true
+
+  validates :startdate_string, 
+            :date => {:after_or_equal_to => Date.today, :message => 'must be after today'},
+                      :on =>:create
+
+  validates :enddate_string, 
+            :date => {:after_or_equal_to  => :startdate_string, :message => 'must be after start date' },
+                      :on => :create
+
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }                      
+
+  validate :reservation_count
+
+  RESERVATION_LIMIT = 50
+
+  def reservation_count
+      if startdate? && enddate?
+        startdate.to_date.upto(enddate.to_date) do | date |
+          if ((Reservation.where('DATE(startdate) <= ? and DATE(enddate) >= ?', date, date).count) > RESERVATION_LIMIT)
+            errors[:base] << "Sorry, no reservations available during that period." 
+            break
+          end
+        end  
+      end
+  end
+
+  def startdate_string
+    startdate.to_s(:proper) if startdate
+  end
+
+  def startdate_string=(startdate_str)
+    self.startdate = startdate_string if startdate.present?
+  end
+
+  
+  def enddate_string
+    enddate.to_s(:proper) if enddate
+  end
+
+  def enddate_string=(enddate_str)
+    self.enddate = Time.parse(enddate_str) if enddate.present?
+  end
+
+end
+

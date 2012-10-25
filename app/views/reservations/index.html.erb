@@ -15,8 +15,8 @@
 
 <% @reservations.each do |reservation| %>
   <tr>
-    <td><%= reservation.startdate.strftime("%m/%d/%y") %></td>
-    <td><%= reservation.enddate.strftime("%m/%d/%y") %></td>
+    <td><%= reservation.startdate.to_s(:proper) %></td>
+    <td><%= reservation.enddate.to_s(:proper) %></td>
     <td><%= reservation.first_name %></td>
     <td><%= reservation.last_name %></td>
     <td><%= reservation.email %></td>

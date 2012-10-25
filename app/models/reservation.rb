@@ -4,19 +4,18 @@ class Reservation < ActiveRecord::Base
   validates :startdate, :enddate, :first_name, :last_name,  presence: true
 
   validates :startdate, 
-            :date => {:after_or_equal_to => Date.today, :message => 'must be after today'},
-                      :on =>:create
+            :date => {:after_or_equal_to => Date.today, :message => 'must be after today'}
 
   validates :enddate, 
-            :date => {:after_or_equal_to  => :startdate, :message => 'must be after start date' },
-                      :on => :create
+            :date => {:after_or_equal_to  => :startdate, :message => 'must be after start date' }
+                      
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }                      
 
   validate :reservation_count
 
-  RESERVATION_LIMIT = 5
+  RESERVATION_LIMIT = 50
 
   def reservation_count
       if startdate? && enddate?
@@ -25,16 +24,9 @@ class Reservation < ActiveRecord::Base
             errors[:base] << "Sorry, no reservations available during that period." 
             break
           end
-      end  
-  end
-     
-     
-
-
+        end  
+      end
   end  
-  
-
-
 end
 
 

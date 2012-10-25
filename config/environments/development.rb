@@ -43,7 +43,7 @@ Delfina::Application.configure do
     domain:           "aceparking.com",
     authentication:   "plain",
     user_name:        "jgjersetace@gmail.com",
-    password:         "",
+    password:         "cWboY517..",
     enable_starttls_auto: true
   }
 end
