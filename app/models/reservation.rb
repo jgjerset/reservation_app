@@ -16,10 +16,12 @@ class Reservation < ActiveRecord::Base
 
   validate :reservation_count
 
+  RESERVATION_LIMIT = 5
+
   def reservation_count
       if startdate? && enddate?
         startdate.to_date.upto(enddate.to_date) do | date |
-          if ((Reservation.where('DATE(startdate) <= ? and DATE(enddate) >= ?', date, date).count) > 5)
+          if ((Reservation.where('DATE(startdate) <= ? and DATE(enddate) >= ?', date, date).count) > RESERVATION_LIMIT)
             errors[:base] << "Sorry, no reservations available during that period." 
             break
           end

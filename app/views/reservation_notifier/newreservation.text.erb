@@ -1,7 +1,11 @@
-Dear <%= @reservation.first_name %>
+Dear <%= @reservation.first_name %> <%= @reservation.last_name %>,
 
-Thank you for your time.  Here is your reservation ID: <%= @reservation.id %>
+Thank you for reserving your space in our reserved self parking lot for <%= DATE(@reservation.startdate) %> to <%= DATE(@reservation.enddate) %> at the Sheraton Delfina. Your reservation number is: <%= @reservation.id %>.
 
-Sincerely,
+Please print this email and display it on your vehicle dashboard upon your arrival to the hotel. Our front drive staff will verify that it is in place anytime you enter our reserved parking lot.
 
-Sheraton Delfina
+If you have any questions, please contact us by calling 310-399-9344. 
+
+Warmest Regards,
+
+Sheraton Delfina Parking
