@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="span6 offset3">
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Startdate:</b>
+  <%= @reservation.startdate %>
+</p>
+
+<p>
+  <b>Enddate:</b>
+  <%= @reservation.enddate %>
+</p>
+
+<p>
+  <b>First name:</b>
+  <%= @reservation.first_name %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%= @reservation.last_name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @reservation.email %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @reservation.phone %>
+</p>
+
+
+<%= link_to 'Edit', edit_reservation_path(@reservation) %> |
+<%= link_to 'Back', reservations_path %>
+
+  </div>
+</div>

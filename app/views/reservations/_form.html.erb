@@ -1,0 +1,40 @@
+<%= form_for(@reservation) do |f| %>
+  <% if @reservation.errors.any? %>
+    <div id="error_explanation">
+      <div class="alert alert-error"><%= pluralize(@reservation.errors.count, "error") %> prohibited this reservation from being saved:
+      </div>
+
+      <ul>
+      <% @reservation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <%= f.label :startdate %>
+    <%= f.text_field :startdate %>
+
+
+    <%= f.label :enddate %>
+    <%= f.text_field :enddate %>
+
+
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+
+
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+
+
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+
+
+    <%= f.label :phone %>
+    <%= f.text_field :phone %><BR />
+
+    <%= f.submit "Create Reservation", class: "btn btn-large btn-primary"%>
+
+<% end %>
