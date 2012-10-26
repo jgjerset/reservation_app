@@ -1,6 +1,8 @@
-Dear <%= @reservation.first_name %> <%= @reservation.last_name %>,
+Dear Guest,
 
-Thank you for reserving your space in our reserved self parking lot for <%= @reservation.startdate.strftime("%m/%d/%y") %> to <%= @reservation.enddate.strftime("%m/%d/%y") %> at the Sheraton Delfina. Your reservation number is: <%= @reservation.id %>.
+Thank you for reserving your space in our reserved self parking lot for <%= @reservation.startdate.to_s(:proper) %> to <%= @reservation.enddate.to_s(:proper) %> at the Sheraton Delfina. 
+
+Your reservation number is: <%= @reservation.id %>.
 
 Please print this email and display it on your vehicle dashboard upon your arrival to the hotel. Our front drive staff will verify that it is in place anytime you enter our reserved parking lot.
 
