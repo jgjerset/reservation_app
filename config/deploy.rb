@@ -44,7 +44,7 @@ set :branch, 'master'
 set :scm_verbose, true
 set :use_sudo, false
 set :rails_env, :production
-set :normalize_asset_timestamps, false
+#set :normalize_asset_timestamps, false
 
 namespace :deploy do
   desc "cause Passenger to initiate a restart"
