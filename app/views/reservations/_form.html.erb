@@ -1,14 +1,13 @@
 <%= form_for(@reservation) do |f| %>
   <% if @reservation.errors.any? %>
     <div id="error_explanation">
-      <div class="alert alert-error"><%= pluralize(@reservation.errors.count, "error") %> prohibited this reservation from being saved:
-      </div>
-
-      <ul>
-      <% @reservation.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+      <div class="alert alert-error">
+         <ul>
+           <% @reservation.errors.full_messages.each do |msg| %>
+             <li><%= msg %></li>
+           <% end %>
+         </ul>
+      </div>   
     </div>
   <% end %>
 

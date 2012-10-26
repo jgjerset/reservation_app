@@ -7,7 +7,7 @@ class Reservation < ActiveRecord::Base
             :date => {:after_or_equal_to => Date.today, :message => 'must be on or after today'}
 
   validates :enddate, 
-            :date => {:after_or_equal_to  => :startdate, :message => 'must be after start date' }
+            :date => {:after => :startdate, :message => 'must be after start date' }
                       
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -15,13 +15,13 @@ class Reservation < ActiveRecord::Base
 
   validate :reservation_count
 
-  RESERVATION_LIMIT = 5
+  RESERVATION_LIMIT = 3
 
   def reservation_count
       if startdate? && enddate?
         startdate.to_date.upto(enddate.to_date) do | date |
-          if ((Reservation.where('DATE(startdate) <= ? and DATE(enddate) >= ?', date, date).count) > RESERVATION_LIMIT)
-            errors[:base] << "Sorry, no reservations available during that period." 
+          if ((Reservation.where('DATE(startdate) <= ? and DATE(enddate) > ?', date, date).count) >= RESERVATION_LIMIT)
+            errors[:base] << "Sorry, no reservations available during that period. Valet parking is available for $25.00 per day, in/out privileges, no reservation required. Show us your valet ticket and receive 15% off our hotel restaurant and bar. Alcoholic beverages are excluded. Thank you and we look forward to serving you." 
             break
           end
         end  

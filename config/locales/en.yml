@@ -5,6 +5,8 @@ en:
   activerecord:
     attributes:
       reservation:
-        startdate: "Start date"
-        enddate: "End date"
+        startdate: "Arrival date"
+        enddate: "Departure date"
 
+        startdate_proper: "Arrival date"
+        enddate_proper: "Departure date"
