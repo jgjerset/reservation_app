@@ -10,10 +10,10 @@ config.per_page = 10
 
     index do
       column :id 
-      column "Arrival date" do |r|
+      column "Arrival date", :sortable => :startdate do |r|
         r.startdate.strftime('%m-%d-%Y')
       end
-      column "Departure date" do |r|
+      column "Departure date", :sortable => :enddate do |r|
         r.enddate.strftime('%m-%d-%Y')
       end
       column :first_name
