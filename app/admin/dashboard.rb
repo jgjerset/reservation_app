@@ -1,6 +1,6 @@
 ActiveAdmin.register_page "Dashboard" do
     ActiveAdmin::Dashboards.build do
-        section "Todays Arrivals" do
+        section "Today's Arrivals" do
             table_for Reservation.where('startdate >= ? and startdate <= ?', Time.now.beginning_of_day, Time.now.end_of_day) do
               column :id 
               column "Arrival date", :sortable => :startdate do |r|
@@ -13,10 +13,10 @@ ActiveAdmin.register_page "Dashboard" do
               column :last_name do |id|
                 link_to id.last_name, admin_reservation_path(id)
               end        
-
               column :email
               column :phone
             end
+
         end 
     end
 end
