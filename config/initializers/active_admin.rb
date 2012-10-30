@@ -148,12 +148,12 @@ ActiveAdmin.setup do |config|
   # config.csv_column_separator = ','
 
 
-module ActiveAdmin 
-  class Namespace 
-    def register_dashboard 
-    end 
-  end 
-end
+#module ActiveAdmin 
+#  class Namespace 
+#    def register_dashboard 
+#    end 
+#  end 
+#end
 
   
 end
