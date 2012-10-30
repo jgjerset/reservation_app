@@ -9,6 +9,7 @@ filter :id
 config.per_page = 10
 
     index do
+      selectable_column
       column :id 
       column "Arrival date", :sortable => :startdate do |r|
         r.startdate.strftime('%m-%d-%Y')
@@ -23,21 +24,7 @@ config.per_page = 10
 
       column :email
       column :phone
-      default_actions
-    end
-
-    csv do
-      column :id
-      column "Arrival date" do |r|
-        r.startdate.strftime('%m-%d-%Y')
-      end
-      column "Departure date" do |r|
-        r.enddate.strftime('%m-%d-%Y')
-      end
-      column :first_name
-      column :last_name
-      column :email
-      column :phone
+      #default_actions
     end
 
     form do |f|
@@ -69,5 +56,17 @@ config.per_page = 10
       end    
     end    
 
-
+    csv do
+      column :id
+      column "Arrival date" do |r|
+        r.startdate.strftime('%m-%d-%Y')
+      end
+      column "Departure date" do |r|
+        r.enddate.strftime('%m-%d-%Y')
+      end
+      column :first_name
+      column :last_name
+      column :email
+      column :phone
+    end
 end

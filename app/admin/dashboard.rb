@@ -1,43 +1,24 @@
 ActiveAdmin.register_page "Dashboard" do
+    ActiveAdmin::Dashboards.build do
+        section "Todays Arrivals" do
+            table_for Reservation.where('startdate >= ? and startdate <= ?', Time.now.beginning_of_day, Time.now.end_of_day) do
+              column :id 
+              column "Arrival date", :sortable => :startdate do |r|
+                r.startdate.strftime('%m-%d-%Y')
+              end
+              column "Departure date", :sortable => :enddate do |r|
+                r.enddate.strftime('%m-%d-%Y')
+              end
+              column :first_name
+              column :last_name do |id|
+                link_to id.last_name, admin_reservation_path(id)
+              end        
 
-#  menu :priority => 1, :label => proc{ I18n.t("active_admin.dashboard") }
-
-#  content :title => proc{ I18n.t("active_admin.dashboard") } do
-#    div :class => "blank_slate_container", :id => "dashboard_default_message" do
-#      span :class => "blank_slate" do
-#        span "Welcome to Active Admin. This is the default dashboard page."
-#        small "To add dashboard sections, checkout 'app/admin/dashboards.rb'"
-#      end
-#    end
-
-    # Here is an example of a simple dashboard with columns and panels.
-    #
-    # columns do
-    #   column do
-    #     panel "Recent Posts" do
-    #       ul do
-    #         Post.recent(5).map do |post|
-    #           li link_to(post.title, admin_post_path(post))
-    #         end
-    #       end
-    #     end
-    #   end
-
-    #   column do
-    #     panel "Info" do
-    #       para "Welcome to ActiveAdmin."
-    #     end
-    #   end
-    # end
-#  end # content
-
-#ActiveAdmin::Dashboards.build do
-#    section "redirect" do
-#        controller.redirect_to home_path
-#    end
-#end
-
-
+              column :email
+              column :phone
+            end
+        end 
+    end
 end
 
 
