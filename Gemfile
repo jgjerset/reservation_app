@@ -4,9 +4,12 @@ gem 'rails', '3.2.8'
 gem 'bootstrap-sass', '2.0.4'
 gem 'jquery-ui-rails'
 gem 'date_validator'
-gem 'bootstrap-will_paginate'
+#gem 'bootstrap-will_paginate'
 gem 'capistrano'
 gem 'rvm-capistrano'
+gem 'ransack'
+gem 'meta_search', '>= 1.1.0.pre'
+gem 'activeadmin'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

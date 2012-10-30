@@ -1,7 +1,7 @@
 class Reservation < ActiveRecord::Base
-  attr_accessible :startdate_proper, :enddate_proper, :first_name, :last_name, :email, :phone 
+  attr_accessible :startdate_proper, :enddate_proper, :startdate, :enddate, :first_name, :last_name, :email, :phone 
 
-  validates :startdate_proper, :enddate_proper, :first_name, :last_name,  presence: true
+  validates :startdate_proper, :enddate_proper, :startdate, :enddate, :first_name, :last_name,  presence: true
 
   validates :startdate, 
             :date => {:after_or_equal_to => Date.today, :message => 'must be on or after today'}
@@ -15,7 +15,7 @@ class Reservation < ActiveRecord::Base
 
   validate :reservation_count
 
-  RESERVATION_LIMIT = 3
+  RESERVATION_LIMIT = 53
 
   def reservation_count
       if startdate? && enddate?

@@ -2,12 +2,15 @@ class ReservationsController < ApplicationController
   # GET /reservations
   # GET /reservations.json
   def index
-    @reservations = Reservation.paginate page: params[:page], order: 'startdate', per_page: 10
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @reservations }
-    end
+  #  @search = Reservation.search(params[:q])
+    #@reservations = Reservation.paginate page: params[:page], order: 'startdate', per_page: 10
+  #  @reservations = @search.result.paginate page: params[:page], order: 'startdate', per_page: 10
+  #  @search.build_condition
+    
+   # respond_to do |format|
+   #   format.html # index.html.erb
+   #   format.json { render json: @reservations }
+   # end
   end
 
   # GET /reservations/1
@@ -45,7 +48,7 @@ class ReservationsController < ApplicationController
     respond_to do |format|
       if @reservation.save
         #ReservationNotifier.newreservation(@reservation).deliver
-        format.html { redirect_to @reservation, notice: 'Reservation was successfully created.' }
+        format.html { redirect_to @reservation, notice: 'Your reservation was successfully created.' }
         format.json { render json: @reservation, status: :created, location: @reservation }
       else
         format.html { render action: "new" }

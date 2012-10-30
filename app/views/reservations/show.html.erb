@@ -4,38 +4,23 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Startdate:</b>
-  <%= @reservation.startdate.to_s(:proper) %>
+Thank you for reserving your space within our reserved self parking lot. An email confirmation has been sent to the email address provided. Please print your email confirmation and bring it with you to our hotel. We ask that you display your confirmation on your vehicle dashboard for the duration of your stay.    
 </p>
-
+<div>
+<h4>Reservation Summary:</h4>
+</div>
 <p>
-  <b>Enddate:</b>
-  <%= @reservation.enddate.to_s(:proper) %>
+  Arrival date:    <%= @reservation.startdate.to_s(:proper) %><br />
+  Departure date:  <%= @reservation.enddate.to_s(:proper) %><br />
+  First name:      <%= @reservation.first_name %><br />
+  Last name:       <%= @reservation.last_name %><br />
+  Email:           <%= @reservation.email %><br />
+  Phone:           <%= @reservation.phone %><br />
 </p>
+<p>Thank you and we are looking forward to serving you.</p>
 
-<p>
-  <b>First name:</b>
-  <%= @reservation.first_name %>
-</p>
-
-<p>
-  <b>Last name:</b>
-  <%= @reservation.last_name %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @reservation.email %>
-</p>
-
-<p>
-  <b>Phone:</b>
-  <%= @reservation.phone %>
-</p>
-
-
-<%= link_to 'Edit', edit_reservation_path(@reservation) %> |
-<%= link_to 'Back', home_path %>
+<%# <%= link_to 'Edit', edit_reservation_path(@reservation) %> 
+<%#<%= link_to 'Home', home_path %>
 
   </div>
 </div>
