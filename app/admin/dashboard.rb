@@ -16,7 +16,7 @@ ActiveAdmin.register_page "Dashboard" do
               column :email
               column :phone
             end
-
+            strong { link_to "Export to CSV", admin_reservations_path(:format => :csv) }
         end 
     end
 end
