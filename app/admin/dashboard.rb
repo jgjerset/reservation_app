@@ -1,7 +1,7 @@
 ActiveAdmin.register_page "Dashboard" do
     ActiveAdmin::Dashboards.build do
         section "Today's Arrivals" do
-            table_for Reservation.where('startdate >= ? and startdate <= ?', Time.now.beginning_of_day, Time.now.end_of_day) do
+            table_for Reservation.where('startdate <= ? and enddate > ?', Time.now, Time.now) do
               column :id 
               column "Arrival date", :sortable => :startdate do |r|
                 r.startdate.strftime('%m-%d-%Y')
