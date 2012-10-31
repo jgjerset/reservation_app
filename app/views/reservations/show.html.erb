@@ -1,26 +1,21 @@
 <div class="row">
+  <div class="hero-unit">
+    <p id="notice center"><%= notice %></p>
+    <p>
+    Thank you for reserving your space within our reserved self parking lot. An email confirmation has been sent to the email address provided. Please print your email confirmation and bring it with you to our hotel. We ask that you display your confirmation on your vehicle dashboard for the duration of your stay.    
+    </p>
+  </div>
   <div class="span6 offset3">
-
-<p id="notice"><%= notice %></p>
-
-<p>
-Thank you for reserving your space within our reserved self parking lot. An email confirmation has been sent to the email address provided. Please print your email confirmation and bring it with you to our hotel. We ask that you display your confirmation on your vehicle dashboard for the duration of your stay.    
-</p>
-<div>
-<h4>Reservation Summary:</h4>
-</div>
-<p>
-  Arrival date:    <%= @reservation.startdate.to_s(:proper) %><br />
-  Departure date:  <%= @reservation.enddate.to_s(:proper) %><br />
-  First name:      <%= @reservation.first_name %><br />
-  Last name:       <%= @reservation.last_name %><br />
-  Email:           <%= @reservation.email %><br />
-  Phone:           <%= @reservation.phone %><br />
-</p>
-<p>Thank you and we are looking forward to serving you.</p>
-
-<%# <%= link_to 'Edit', edit_reservation_path(@reservation) %> 
-<%#<%= link_to 'Home', home_path %>
-
+    <h4>Reservation Summary:</h4>
+    <ul class="unstyled">
+      <li>Arrival date:    <%= @reservation.startdate.to_s(:proper) %></li>
+      <li>Departure date:  <%= @reservation.enddate.to_s(:proper) %></li>
+      <li>First name:      <%= @reservation.first_name %></li>
+      <li>Last name:       <%= @reservation.last_name %></li>
+      <li>Email:           <%= @reservation.email %></li>
+      <li>Phone:           <%= @reservation.phone %></li>
+    </ul>
+    <p>Thank you and we are looking forward to serving you.</p>
   </div>
 </div>
+
