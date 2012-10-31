@@ -6,6 +6,15 @@ filter :first_name
 filter :last_name
 filter :id
 
+scope :all, :default => true
+scope :Arrivals do |reservations| 
+  Reservation.where('startdate <= ? and enddate > ?', Time.now, Time.now) 
+end  
+
+scope :Departures do |reservations| 
+  Reservation.where('enddate between ? and ?', Time.now, Time.now) 
+end 
+
 config.per_page = 10
 
     index do
