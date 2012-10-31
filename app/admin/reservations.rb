@@ -7,7 +7,7 @@ filter :last_name
 filter :id
 
 scope :all, :default => true
-scope :Arrivals do |reservations| 
+scope :Occupants do |reservations| 
   Reservation.where('startdate <= ? and enddate > ?', Time.now, Time.now) 
 end  
 
