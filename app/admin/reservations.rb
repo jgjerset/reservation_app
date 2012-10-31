@@ -12,7 +12,7 @@ scope :Arrivals do |reservations|
 end  
 
 scope :Departures do |reservations| 
-  Reservation.where('enddate between ? and ?', Time.now, Time.now) 
+  Reservation.where('enddate >= ? and enddate <= ?', Time.zone.local(Time.now.year, Time.now.month, Time.now.day), Time.zone.local(Time.now.year, Time.now.month, Time.now.day)) 
 end 
 
 config.per_page = 10
