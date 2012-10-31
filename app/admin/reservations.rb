@@ -12,7 +12,7 @@ scope :Occupants do |reservations|
 end  
 
 scope :Departures do |reservations| 
-  Reservation.where('enddate >= ? and enddate <= ?', Time.zone.local(Time.now.year, Time.now.month, Time.now.day), Time.zone.local(Time.now.year, Time.now.month, Time.now.day)) 
+  Reservation.where('DATE(enddate) = ?', Date.today) 
 end 
 
 config.per_page = 10
