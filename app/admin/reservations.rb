@@ -1,5 +1,7 @@
 ActiveAdmin.register Reservation do
 
+
+
 filter :startdate
 filter :enddate
 filter :first_name
@@ -15,7 +17,7 @@ scope :Departures do |reservations|
   Reservation.where('DATE(enddate) = ?', Date.today) 
 end 
 
-config.per_page = 10
+config.per_page = 50
 
     index do
       selectable_column
