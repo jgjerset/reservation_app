@@ -3,28 +3,17 @@
 
 <table class="table table-striped table-bordered table-hover table-condensed">
   <tr>
-    <th><%= sort_link @search, :startdate, "Arrival date" %></th>
-    <th><%= sort_link @search, :enddate, "Departure date" %></th>
-    <th><%= sort_link @search, :first_name, "First name" %></th>
-    <th><%= sort_link @search, :last_name, "Last name" %></th>
-    <th><%= sort_link @search, :email, "Email" %></th>
-    <th><%= sort_link @search, :phone, "Phone" %></th>
+    <th><%= "Arrival date" %></th>
+    <th><%= "Departure date" %></th>
+    <th><%= "First name" %></th>
+    <th><%= "Last name" %></th>
+    <th><%= "Email" %></th>
+    <th><%= "Phone" %></th>
     <th></th>
     <th></th>
   </tr>
 
-<% @reservations.each do |reservation| %>
-  <tr>
-    <td><%= reservation.startdate.to_s(:proper) %></td>
-    <td><%= reservation.enddate.to_s(:proper) %></td>
-    <td><%= reservation.first_name %></td>
-    <td><%= reservation.last_name %></td>
-    <td><%= reservation.email %></td>
-    <td><%= reservation.phone %></td>
-    <td><%= link_to 'Edit', edit_reservation_path(reservation) %></td>
-    <td><%= link_to 'Destroy', reservation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+
 </table>
 
 <br />

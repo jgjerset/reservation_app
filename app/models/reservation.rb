@@ -1,4 +1,7 @@
 class Reservation < ActiveRecord::Base
+
+
+
   attr_accessible :startdate_proper, :enddate_proper, :startdate, :enddate, :first_name, :last_name, :email, :phone 
 
   validates :startdate_proper, :enddate_proper, :startdate, :enddate, :first_name, :last_name,  presence: true
@@ -8,6 +11,7 @@ class Reservation < ActiveRecord::Base
 
   validates :enddate, 
             :date => {:after => :startdate, :message => 'must be after start date' }
+
                       
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -44,6 +48,8 @@ class Reservation < ActiveRecord::Base
   def enddate_proper=(enddate_str)
     self.enddate = Date.strptime(enddate_str, "%m-%d-%Y") if enddate_str.present?
   end
+
+   obfuscate_id :spin => 64554664
 end
 
 

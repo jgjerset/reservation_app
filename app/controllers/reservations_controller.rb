@@ -2,6 +2,9 @@ class ReservationsController < ApplicationController
   # GET /reservations
   # GET /reservations.json
   def index
+    redirect_to home_path
+  rescue 
+    redirect_to home_path
   #  @search = Reservation.search(params[:q])
     #@reservations = Reservation.paginate page: params[:page], order: 'startdate', per_page: 10
   #  @reservations = @search.result.paginate page: params[:page], order: 'startdate', per_page: 10
@@ -17,6 +20,10 @@ class ReservationsController < ApplicationController
   # GET /reservations/1.json
   def show
     @reservation = Reservation.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to "/doesnotexist.html"
+    #render :json => "record not Record Not Found"
+  rescue
 
     respond_to do |format|
       format.html # show.html.erb
