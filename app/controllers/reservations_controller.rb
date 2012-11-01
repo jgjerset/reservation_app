@@ -45,6 +45,8 @@ class ReservationsController < ApplicationController
   # GET /reservations/1/edit
   def edit
     @reservation = Reservation.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+       redirect_to "/doesnotexist.html"
   end
 
   # POST /reservations
