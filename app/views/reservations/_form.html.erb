@@ -34,16 +34,19 @@
     <%= f.label :phone %>
     <%= f.text_field :phone %><BR />
 
+    <% if @reservation.new_record? %>
+        <%= f.submit "Create Reservation", class: "btn btn-large btn-primary"%>
+    <% else %>    
     <table>
       <tr>
         <td>
-    <%= f.submit @reservation.new_record? ? "Create Reservation" : "Update Reservation", class: "btn btn-large btn-primary"%>
-        </td>
+          <%= f.submit "Update Reservation", method: :update, class: "btn btn-large btn-primary"%>    
+        </td>  
         <td>&nbsp;</td>
         <td>
-    <% if !@reservation.new_record? %>
-    <%= button_to 'Delete', @reservation, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-large btn-primary" %>
-    <% end %>
+          <%= link_to 'Delete', @reservation, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-large btn-primary" %>
         </td>
-    </table>
+      </tr>
+    </table>  
+    <% end %>
 <% end %>
