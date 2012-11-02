@@ -1,7 +1,5 @@
 ActiveAdmin.register Reservation do
 
-
-
 filter :startdate
 filter :enddate
 filter :first_name
@@ -29,7 +27,7 @@ config.per_page = 50
         r.enddate.strftime('%m-%d-%Y')
       end
       column :first_name
-      column :last_name do |id|
+      column :last_name, :sortable => :last_name do |id|
         link_to id.last_name, admin_reservation_path(id)
       end        
 
