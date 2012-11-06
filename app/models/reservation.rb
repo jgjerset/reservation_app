@@ -19,7 +19,7 @@ class Reservation < ActiveRecord::Base
 
   validate :reservation_count
 
-  RESERVATION_LIMIT = 53
+  RESERVATION_LIMIT = 50
 
   def reservation_count
       if startdate? && enddate?

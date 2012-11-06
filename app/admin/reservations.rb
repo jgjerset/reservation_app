@@ -6,6 +6,15 @@ filter :first_name
 filter :last_name
 filter :id
 
+batch_action :destroy, :confirm => "Are you sure?" do |selection|
+ logger.debug "Jon #{selection}"
+ sql = "delete from reservations where id in (#{selection.to_param.gsub(/\//,",")})"
+ ActiveRecord::Base.connection.execute(sql)
+ #Reservation.find(selection).each { |p| destroy }
+ redirect_to collection_path
+end
+
+
 scope :all, :default => true
 scope :Occupants do |reservations| 
   Reservation.where('startdate <= ? and enddate > ?', Time.now, Time.now) 
@@ -19,7 +28,7 @@ config.per_page = 50
 
     index do
       selectable_column
-      column :id 
+      column :id.to_param 
       column "Arrival date", :sortable => :startdate do |r|
         r.startdate.strftime('%m-%d-%Y')
       end

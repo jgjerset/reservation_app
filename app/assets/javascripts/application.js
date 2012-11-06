@@ -13,6 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.datepicker
-//= require home.js
-//= require make_datetime_lte_work.js
-//= require reservations.js
+//= require home
+//= require make_datetime_lte_work
+//= require reservations
