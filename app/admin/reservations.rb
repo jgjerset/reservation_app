@@ -1,30 +1,32 @@
 ActiveAdmin.register Reservation do
 
-filter :startdate
-filter :enddate
-filter :first_name
-filter :last_name
-filter :id
+    filter :startdate
+    filter :enddate
+    filter :first_name
+    filter :last_name
+    filter :id
 
-batch_action :destroy, :confirm => "Permanently delete all selected reservations?" do |selection|
- logger.debug "Jon #{selection}"
- sql = "delete from reservations where id in (#{selection.to_param.gsub(/\//,",")})"
- ActiveRecord::Base.connection.execute(sql)
- #Reservation.find(selection).each { |p| destroy }
- redirect_to collection_path
-end
+    config.per_page = 50
+    config.sort_order = "startdate_desc"
+
+    batch_action :destroy, :confirm => "Permanently delete all selected reservations?" do |selection|
+     logger.debug "Jon #{selection}"
+     sql = "delete from reservations where id in (#{selection.to_param.gsub(/\//,",")})"
+     ActiveRecord::Base.connection.execute(sql)
+     redirect_to collection_path
+    end
 
 
-scope :all, :default => true
-scope :Occupants do |reservations| 
-  Reservation.where('startdate <= ? and enddate > ?', Time.now, Time.now) 
-end  
+    scope :all, :default => true
+    scope :Occupants do |reservations| 
+      Reservation.where('startdate <= ? and enddate > ?', Time.now, Time.now) 
+    end  
 
-scope :Departures do |reservations| 
-  Reservation.where('DATE(enddate) = ?', Date.today) 
-end 
+    scope :Departures do |reservations| 
+      Reservation.where('DATE(enddate) = ?', Date.today) 
+    end 
 
-config.per_page = 50
+
 
     index do
       selectable_column
