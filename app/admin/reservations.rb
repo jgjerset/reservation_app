@@ -6,7 +6,7 @@ filter :first_name
 filter :last_name
 filter :id
 
-batch_action :destroy, :confirm => "Are you sure?" do |selection|
+batch_action :destroy, :confirm => "Permanently delete all selected reservations?" do |selection|
  logger.debug "Jon #{selection}"
  sql = "delete from reservations where id in (#{selection.to_param.gsub(/\//,",")})"
  ActiveRecord::Base.connection.execute(sql)
