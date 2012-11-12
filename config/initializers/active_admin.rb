@@ -139,8 +139,12 @@ ActiveAdmin.setup do |config|
   #   config.register_stylesheet 'my_print_stylesheet.css', :media => :print
   #
   # To load a javascript file:
-  #   config.register_javascript 'my_javascript.js'
+ # config.register_javascript 'raphael.js'
+ # config.register_javascript 'g.raphael.js'
+ # config.register_javascript 'g.bar.js'
+  config.register_javascript 'highcharts.js'
 
+  config.register_stylesheet 'active_admin_ex.css'
 
   # == CSV options
   #

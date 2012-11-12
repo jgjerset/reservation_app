@@ -4,4 +4,5 @@
 jQuery ->
   $('#reservation_startdate_proper').datepicker({dateFormat: 'mm-dd-yy'})
   $('#reservation_enddate_proper').datepicker({dateFormat: 'mm-dd-yy'})  
-    
+
+  
