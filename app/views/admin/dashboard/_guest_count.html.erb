@@ -1,0 +1,50 @@
+<script>
+  $(function() {
+    Highcharts.setOptions({
+        global: {
+            useUTC: false
+        }
+    });
+
+
+    new Highcharts.Chart({
+      chart: {
+        renderTo: "holder",
+        defaultSeriesType: 'column'
+      },
+      title: {
+        text: "Guest by Day"
+      },
+      xAxis: {
+        type: "datetime",
+        dateTimeLableFormats: {
+          day: "%m-%d"
+        }
+      },
+      yAxis: {
+        title: {
+          text: "Guests"
+        }
+      },
+      tooltip: {
+        formatter: function() {
+          return Highcharts.dateFormat("%B %e", this.x) + '-  ' + this.y
+        }
+      },
+      series: [{
+        pointInterval: <%= 1.day * 1000 %>,
+        pointStart: <%= Time.parse(guest_count.keys[0]).utc.to_i*1000 %>,
+        data: [ <% guest_count.each do |key, value| %>
+                  <%= value %>,
+                <% end %> ]
+      }]
+
+    });
+   });
+</script>
+
+<div id="holder" class="chartholder"></div>
+
+
+
+

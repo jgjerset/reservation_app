@@ -1,0 +1,48 @@
+<script>
+  $(function() {
+    var r = Raphael("holder"),
+                    fin = function () {
+                        this.flag = r.popup(this.bar.x, this.bar.y, this.bar.value || "0").insertBefore(this);
+                    },
+                    fout = function () {
+                        this.flag.animate({opacity: 0}, 300, function () {this.remove();});
+                    },
+
+                    txtattr = { font: "12px sans-serif" };
+
+                    r.text(450, 10, "Guest Counts By Day").attr(txtattr);
+
+                    
+
+            data1 = [
+            
+            <% guest_count.each do |key, value| %>
+              <%= value %>,
+            <% end %> 
+
+                    ],
+
+                    
+            
+            
+
+    
+    r.barchart(330, 10, 300, 220, [data1]).hover(fin, fout);
+   });
+</script>
+
+<div id="holder" class="chartholder"></div>
+
+<%= guest_count %><BR />
+
+<%= guest_count["2012-11-09"] %><BR />
+<%= guest_count["2012-11-10"] %><BR />
+<%= guest_count["2012-11-11"] %><BR />
+
+<% guest_count.each do |key, value| %>
+  <%= key %> -
+  <%= value %><br />
+<% end %> 
+
+
+
