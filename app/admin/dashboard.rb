@@ -1,6 +1,6 @@
 ActiveAdmin.register_page "Dashboard" do
     ActiveAdmin::Dashboards.build do
-        section "Today's Arrivals and Occupants" do
+        section "Today's Arrivals and Occupants", :priority => 1 do
             table_for Reservation.where('startdate <= ? and enddate > ?', Time.now, Time.now) do
               column :id 
               column "Arrival date", :sortable => :startdate do |r|
@@ -18,6 +18,33 @@ ActiveAdmin.register_page "Dashboard" do
             end
             strong { link_to "Export to CSV", admin_reservations_path(:format => :csv) }
         end 
+
+        section "Guest Count" do
+          div  do
+#            @guest_count = Reservation.where('id > 1')
+
+          
+              @my_hash = {}
+              Reservation.minimum('startdate').to_date.upto(Reservation.maximum('enddate').to_date) do | date |
+                @my_hash[date.strftime('%Y-%m-%d')] = 0
+              end
+
+              Reservation.find(:all).each do |res|
+                  @my_hash.each do |key, value |
+                    if res.startdate.to_date <=  key.to_date and res.enddate.to_date > key.to_date
+                      @my_hash[key] += 1
+                      logger.debug "keylooping"
+                    end
+                end
+                logger.debug res.id
+              end    
+              
+              logger.debug "hello"
+              logger.debug @my_hash
+
+              render "guest_count", { :guest_count => @my_hash }
+          end
+        end    
     end
 end
 
