@@ -21,15 +21,13 @@ ActiveAdmin.register_page "Dashboard" do
 
         section "Guest Count" do
           div  do
-#            @guest_count = Reservation.where('id > 1')
-
-          
               @my_hash = {}
               Reservation.minimum('startdate').to_date.upto(Reservation.maximum('enddate').to_date) do | date |
                 @my_hash[date.strftime('%Y-%m-%d')] = 0
               end
 
-              Reservation.find(:all).each do |res|
+              @reservation = Reservation.where('id > 1')  
+              @reservation.each do |res|
                   @my_hash.each do |key, value |
                     if res.startdate.to_date <=  key.to_date and res.enddate.to_date > key.to_date
                       @my_hash[key] += 1
