@@ -28,7 +28,7 @@
       },
       tooltip: {
         formatter: function() {
-          return Highcharts.dateFormat("%B %e", this.x) + '-  ' + this.y
+          return Highcharts.dateFormat("%b %e", this.x) + '-  ' + this.y
         }
       },
       series: [{
@@ -44,7 +44,3 @@
 </script>
 
 <div id="holder" class="chartholder"></div>
-
-<%= Time.parse(guest_count.keys[0]).to_i %>
-<%= Time.parse(guest_count.keys[0]).beginning_of_day.to_i %>
-<%= Time.parse(guest_count.keys[0]).end_of_day.to_i %>

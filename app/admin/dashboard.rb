@@ -1,23 +1,5 @@
 ActiveAdmin.register_page "Dashboard" do
     ActiveAdmin::Dashboards.build do
-        section "Today's Arrivals and Occupants", :priority => 1 do
-            table_for Reservation.where('startdate <= ? and enddate > ?', Time.now, Time.now) do
-              column :id 
-              column "Arrival date", :sortable => :startdate do |r|
-                r.startdate.strftime('%m-%d-%Y')
-              end
-              column "Departure date", :sortable => :enddate do |r|
-                r.enddate.strftime('%m-%d-%Y')
-              end
-              column :first_name
-              column :last_name do |id|
-                link_to id.last_name, admin_reservation_path(id)
-              end        
-              column :email
-              column :phone
-            end
-            strong { link_to "Export to CSV", admin_reservations_path(:format => :csv) }
-        end 
 
         section "Guest Count" do
           div  do
@@ -37,7 +19,28 @@ ActiveAdmin.register_page "Dashboard" do
               
               render "guest_count", { :guest_count => @my_hash }
           end
-        end    
+        end 
+
+        section "Today's Arrivals and Occupants", :priority => 1 do
+            table_for Reservation.where('startdate <= ? and enddate > ?', Time.now, Time.now) do
+              column :id 
+              column "Arrival date", :sortable => :startdate do |r|
+                r.startdate.strftime('%m-%d-%Y')
+              end
+              column "Departure date", :sortable => :enddate do |r|
+                r.enddate.strftime('%m-%d-%Y')
+              end
+              column :first_name
+              column :last_name do |id|
+                link_to id.last_name, admin_reservation_path(id)
+              end        
+              column :email
+              column :phone
+            end
+            strong { link_to "Export to CSV", admin_reservations_path(:format => :csv) }
+        end 
+
+   
     end
 end
 
