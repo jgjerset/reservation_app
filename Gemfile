@@ -9,7 +9,7 @@ gem 'capistrano'
 gem 'rvm-capistrano'
 gem 'ransack'
 gem 'meta_search', '>= 1.1.0.pre'
-gem 'activeadmin'
+
 gem 'obfuscate_id'
 
 # Bundle edge Rails instead:
@@ -29,6 +29,7 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
+  gem 'activeadmin'
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
 
