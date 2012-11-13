@@ -32,6 +32,7 @@
         }
       },
       series: [{
+        showInLegend: false,
         pointInterval: <%= 1.day * 1000 %>,
         pointStart: <%= (Time.parse(guest_count.keys[0]).to_i + 3600) * 1000 %>,
         data: [ <% guest_count.each do |key, value| %>
