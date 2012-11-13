@@ -31,15 +31,10 @@ ActiveAdmin.register_page "Dashboard" do
                   @my_hash.each do |key, value |
                     if res.startdate.to_date <=  key.to_date and res.enddate.to_date > key.to_date
                       @my_hash[key] += 1
-                      logger.debug "keylooping"
                     end
                 end
-                logger.debug res.id
               end    
               
-              logger.debug "hello"
-              logger.debug @my_hash
-
               render "guest_count", { :guest_count => @my_hash }
           end
         end    

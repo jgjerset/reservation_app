@@ -1,16 +1,16 @@
 <script>
   $(function() {
+
     Highcharts.setOptions({
         global: {
             useUTC: false
         }
     });
 
-
     new Highcharts.Chart({
       chart: {
         renderTo: "holder",
-        defaultSeriesType: 'column'
+        defaultSeriesType: "column"
       },
       title: {
         text: "Guest by Day"
@@ -33,7 +33,7 @@
       },
       series: [{
         pointInterval: <%= 1.day * 1000 %>,
-        pointStart: <%= Time.parse(guest_count.keys[0]).utc.to_i*1000 %>,
+        pointStart: <%= (Time.parse(guest_count.keys[0]).to_i + 3600) * 1000 %>,
         data: [ <% guest_count.each do |key, value| %>
                   <%= value %>,
                 <% end %> ]
@@ -45,6 +45,6 @@
 
 <div id="holder" class="chartholder"></div>
 
-
-
-
+<%= Time.parse(guest_count.keys[0]).to_i %>
+<%= Time.parse(guest_count.keys[0]).beginning_of_day.to_i %>
+<%= Time.parse(guest_count.keys[0]).end_of_day.to_i %>
