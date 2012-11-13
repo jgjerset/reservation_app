@@ -21,6 +21,7 @@ ActiveAdmin.register_page "Dashboard" do
           end
         end 
 
+
         section "Today's Arrivals and Occupants", :priority => 1 do
             table_for Reservation.where('startdate <= ? and enddate > ?', Time.now, Time.now) do
               column :id 
