@@ -144,7 +144,7 @@ ActiveAdmin.setup do |config|
  # config.register_javascript 'g.bar.js'
   config.register_javascript 'highcharts.js'
 
-  #config.register_stylesheet 'active_admin_ex.css'
+  config.register_stylesheet 'active_admin_ex.css'
 
   # == CSV options
   #
