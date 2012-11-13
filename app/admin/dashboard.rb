@@ -1,7 +1,7 @@
 ActiveAdmin.register_page "Dashboard" do
     ActiveAdmin::Dashboards.build do
 
-        section "Guest Count" do
+        section "Guest Count", :priority => 1 do
           div  do
               @my_hash = {}
               Reservation.minimum('startdate').to_date.upto(Reservation.maximum('enddate').to_date) do | date |
@@ -22,7 +22,7 @@ ActiveAdmin.register_page "Dashboard" do
         end 
 
 
-        section "Today's Arrivals and Occupants", :priority => 1 do
+        section "Today's Arrivals and Occupants"  do
             table_for Reservation.where('startdate <= ? and enddate > ?', Time.now, Time.now) do
               column :id 
               column "Arrival date", :sortable => :startdate do |r|
