@@ -27,12 +27,3 @@
 // .active_admin       applies to any Active Admin namespace
 // .admin_namespace    applies to the admin namespace (eg: /admin)
 // .other_namespace    applies to a custom namespace named other (eg: /other)
-
-table.dashboard > tbody > tr > td {
-  display:block;
-}
-
-.chartholder {
-margin-left: 10%;
-margin-right: 10%;
-}

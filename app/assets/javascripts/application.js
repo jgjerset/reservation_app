@@ -17,5 +17,4 @@
 //= require home
 //= require make_datetime_lte_work
 //= require reservations
-//= require highcharts
 
