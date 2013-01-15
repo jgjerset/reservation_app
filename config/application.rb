@@ -59,6 +59,7 @@ module Delfina
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    
     config.assets.precompile += ['highcharts.js', 'active_admin_ex.css']
   end
 end

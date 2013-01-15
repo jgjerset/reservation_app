@@ -23,18 +23,18 @@
       },
       yAxis: {
         title: {
-          text: "Guests"
+          text: "Number of Guests"
         }
       },
       tooltip: {
         formatter: function() {
-          return Highcharts.dateFormat("%b %e", this.x) + ' - ' + this.y
+          return Highcharts.dateFormat("%a, %b %e", this.x) + ' - ' + this.y
         }
       },
       series: [{
         showInLegend: false,
         pointInterval: <%= 1.day * 1000 %>,
-        pointStart: <%= (Time.parse(guest_count.keys[0]).to_i + 3600) * 1000 %>,
+        pointStart: <%= (Time.parse(guest_count.keys[0]).to_i + 1.hour) * 1000 %>,
         data: [ <% guest_count.each do |key, value| %>
                   <%= value %>,
                 <% end %> ]

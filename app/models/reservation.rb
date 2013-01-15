@@ -25,7 +25,18 @@ class Reservation < ActiveRecord::Base
       if startdate? && enddate?
         startdate.to_date.upto(enddate.to_date) do | date |
           if ((Reservation.where('DATE(startdate) <= ? and DATE(enddate) > ?', date, date).count) >= RESERVATION_LIMIT)
-            errors[:base] << "Sorry, no reservations available during that period. Valet parking is available for $25.00 per day, in/out privileges, no reservation required. Show us your valet ticket and receive 15% off our hotel restaurant and bar. Alcoholic beverages are excluded. Thank you and we look forward to serving you." 
+            errors[:base] << "Dear Guest,"
+            errors[:base] << "  "
+            errors[:base] << "Thank you for choosing the Sheraton Delfina for your travels. We are sorry but there is not any availability for our self parking at this time. We will make every attempt to reserve a space for you by the time of check in."
+            errors[:base] << "  "
+            errors[:base] << "Should you have any questions, please contact us at 310.399.9344 for further assistance."
+            errors[:base] << "  "
+            errors[:base] << "We look forward to welcoming you at the Sheraton Delfina hotel."
+            errors[:base] << "  "
+            errors[:base] << "Sincerely,"
+            errors[:base] << "  "  
+            errors[:base] << "Helene Grilliot"
+
             break
           end
         end  
