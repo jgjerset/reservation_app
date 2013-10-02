@@ -1,5 +1,5 @@
 class ReservationNotifier < ActionMailer::Base
-  default from: "Sheraton Delfina <jon@gjerset.com>"
+  default from: "Le Meridien Delfina <noreply@aceparking.com>"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
@@ -9,6 +9,6 @@ class ReservationNotifier < ActionMailer::Base
   def newreservation(reservation)
     @reservation = reservation
 
-    mail to: reservation.email, subject: 'Parking Reservation from the Sheraton'
+    mail to: reservation.email, subject: 'Parking Reservation from the Le Meridien'
   end
 end
