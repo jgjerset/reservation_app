@@ -83,4 +83,13 @@ class ReservationsController < ApplicationController
     end
   end
 
+  def destroy
+    @reservation = Reservation.find(params[:id])
+    #rescue ActiveRecord::RecordNotFound
+       #redirect_to "/doesnotexist.html"
+    @reservation.delete
+    redirect_to "/reservationdeleted.html"
+  end
+
+
 end
