@@ -47,8 +47,8 @@ ActiveRecord::Schema.define(:version => 20121029193901) do
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
   create_table "reservations", :force => true do |t|
-    t.datetime "startdate"
-    t.datetime "enddate"
+    t.date     "startdate"
+    t.date     "enddate"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
