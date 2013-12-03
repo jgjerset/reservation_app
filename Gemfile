@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.8'
+gem 'rails', '~> 3.2.8'
 gem 'bootstrap-sass', '2.0.4'
 
 gem 'date_validator'
@@ -9,7 +9,8 @@ gem 'capistrano'
 gem 'rvm-capistrano'
 gem 'ransack'
 gem 'meta_search', '>= 1.1.0.pre'
-gem 'activeadmin'
+gem 'activeadmin', '0.5.1'
+gem 'devise', '~>2.1'
 gem 'obfuscate_id'
 
 # Bundle edge Rails instead:
@@ -39,7 +40,7 @@ group :assets do
   gem 'jquery-ui-rails'
 end
 
-gem 'jquery-rails'
+gem 'jquery-rails', "< 3.0.0"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
